@@ -4,6 +4,16 @@ metadata:
   labels:
     run: gateway
   name: gateway
+subjects:
+- kind: ServiceAccount
+  # Reference to upper's `metadata.name`
+  name: default
+  # Reference to upper's `metadata.namespace`
+  namespace: default
+roleRef:
+  kind: ClusterRole
+  name: cluster-admin
+  apiGroup: rbac.authorization.k8s.io
 spec:
   replicas: 1
   selector:
